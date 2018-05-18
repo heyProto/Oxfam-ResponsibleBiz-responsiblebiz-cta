@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import Modal from "./Modal.js";
 
 export default class toCreditsCard extends React.Component {
   constructor(props) {
@@ -11,11 +12,13 @@ export default class toCreditsCard extends React.Component {
         card_data: {},
         configs: {}
       },
+      showModal: false,
       optionalConfigJSON: {},
       image_count: 1
     };
-    this.links_counter = 0;
-
+    this.showModal = this.showModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
+    
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
@@ -62,6 +65,34 @@ export default class toCreditsCard extends React.Component {
     return this.props.selector.getBoundingClientRect();
   }
 
+  showModal(e) {
+    this.setState({
+      showModal: true
+    })
+  }
+
+  closeModal() {
+    // document.getElementById('.area-input').value = ''
+    this.setState({
+      showModal: false
+    })
+  }
+
+  getHealthFacilities(data){
+    let api = data.api,
+      value = document.querySelector('.area-input').value;
+
+    // console.log(value, api, api +"?q="+ value,  "-----")
+    axios.get(api +"?q="+ value).then((response_data) => {
+      console.log(response_data)
+      this.setState({
+        responseData: response_data.data
+      })
+    })
+    this.showModal();
+  }
+
+
   onClickFirstExpand(e){
     document.querySelector(".col-16-tool-strip").style.height = "250px"
     document.querySelectorAll(".verticle-divider").forEach((d, i) => {
@@ -91,7 +122,7 @@ export default class toCreditsCard extends React.Component {
             <p>Find the nearest health facilities around you</p>
             <input type="text" name="area" className="area-input" placeholder="Start typing the name of your area" />
             <div className="tool-call-to-action-area">
-              <div className="tool-call-to-action-button">
+              <div className="tool-call-to-action-button" onClick={(e) => this.getHealthFacilities(card_1)}>
                 Search
               </div>
             </div>
@@ -145,6 +176,12 @@ export default class toCreditsCard extends React.Component {
               </div></a>
             </div>
           </div>
+          <Modal
+            showModal={this.state.showModal}
+            closeModal={this.closeModal}
+            mode={this.state.mode}
+            responseData={this.state.responseData}
+          />
         </div>
       )
     }
