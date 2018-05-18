@@ -1,0 +1,21 @@
+{
+  "data":{
+    "card_1": {
+      "title": "HEALTH FACILITIES",
+      "api": "http://healthlocator.codefortanzania.org/api/facilities"
+    },
+    "card_2": {
+      "title": "PHARMACIES",
+      "listing_drugs_api": "http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/searchpharmacies",
+      "drug_price_api": " http://medprices-api.codefortanzania.org/api/drugs"
+    },
+    "card_3": {
+      "title": "MEDICINE PRICES",
+      "api": ""
+    },
+    "card_4": {
+      "title": "EShangazi",
+      "url": "http://eshangazi.co.tz/"
+    }
+  }
+}
