@@ -9,11 +9,11 @@
       "api": "https://healthlocator.codefortanzania.org/api/facilities"
     },
     "card_2": {
-      "title": "PHARMACIES",
-      "api": "https://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/searchpharmacies"      
+      "title": "Pharmacies",
+      "api": "http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/searchpharmacies"      
     },
     "card_3": {
-      "title": "MEDICINE PRICES",
+      "title": "Medicine Prices",
       "listing_drugs_api": "https://medprices-api.codefortanzania.org/api/drugs",
       "drug_price_api": "https://medprices-api.codefortanzania.org/api/checkprice"
     },

@@ -108,17 +108,20 @@ export default class toCreditsCard extends React.Component {
   }
 
   getPharmacies(data){
-    // let api = data.api,
-    //   name = 
-    //   location = ;
+    let api = data.api,
+      location = document.querySelector('.location-input').value,
+      name = document.querySelector('.pharmacie-name-input').value,
+      api_url = api + "?search_by=name" + "&query=" + name;
 
-    // axios.get(api +"?q="+ value).then((response_data) => {
-    //   console.log(response_data)
-    //   this.setState({
-    //     responseData: response_data.data.facilities
-    //   })
-    // })
-    // this.showModal();
+    axios.get(api_url).then((response_data) => {
+      console.log(response_data)
+      this.setState({
+        responseData: response_data.data.pharmacies,
+        card_type: "pharmacies",
+        title: data.title
+      })
+    })
+    this.showModal();
   }
 
   getMedicinePrices(data){
@@ -136,7 +139,8 @@ export default class toCreditsCard extends React.Component {
       this.setState({
         responseData: response_data.data,
         card_type: "medicine_prices",
-        title: data.title
+        title: data.title,
+        buying_price: buying_price
       })
     })
     this.showModal();
@@ -246,9 +250,11 @@ export default class toCreditsCard extends React.Component {
             showModal={this.state.showModal}
             closeModal={this.closeModal}
             mode={this.state.mode}
+            dataJSON={data}
             responseData={this.state.responseData}
             cardType={this.state.card_type}
             title={this.state.title}
+            buying_price={this.state.buying_price}
           />
         </div>
       )

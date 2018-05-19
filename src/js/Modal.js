@@ -24,80 +24,151 @@ class Modal extends React.Component {
 
   render() {
     let modal_content,
+      image,
       title;
     if (this.props.responseData === undefined){
       modal_content = ''
       title =''
+      image=''
     } else {
       let data = this.props.responseData;
       title = this.props.title;
       if (this.props.cardType === 'health_facilities'){
+        image = 'img/facilities-icon-black.png';
         modal_content = data.map((d,i) => {
-          return(
-            <div className="modal-single-content">
-              <div className="modal-name">{d.facility_name}</div>
-              <div className="modal-content-left">
-                <div>
-                  <div className="modal-title">Region</div>
-                  <div className="modal-value">{d.region}</div>
+          return(          
+            <div className="modal-list">
+              <div className="single-search-result">
+                <div className="single-search-result-title">
+                  {d.facility_name}
                 </div>
-                <div>
-                  <div className="modal-title">District</div>
-                  <div className="modal-value">{d.district}</div>
+                <div className="status-label">
+                  {d.status}
                 </div>
-                <div>
-                  <div className="modal-title">Ward</div>
-                  <div className="modal-value">{d.ward}</div>
-                </div>
-                 <div>
-                  <div className="modal-title">Village</div>
-                  <div className="modal-value">{d.village}</div>
+                <div className="single-search-result-values">
+                  <div className="half-width-parameter">
+                    <div className="single-parameter">
+                      <div className="parameter-label">Type</div>
+                      <p>{d.facility_type}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Zone</div>
+                      <p>{d.zone}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Region</div>
+                      <p>{d.region}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">District</div>
+                      <p>{d.district}</p>
+                    </div>
+                  </div>
+                  <div className="half-width-parameter">
+                    <div className="single-parameter">
+                      <div className="parameter-label">Ownership</div>
+                      <p>{d.ownership}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Council</div>
+                      <p>{d.council}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Village</div>
+                      <p>{d.village}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Ward</div>
+                      <p>{d.ward}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="modal-content-right">
-                <div>
-                  <div className="modal-title">Type</div>
-                  <div className="modal-value">{d.facility_type}</div>
+            </div> 
+          )
+        })
+      } else if (this.props.cardType === 'pharmacies'){
+        image = 'img/pharmacies-icon-black.png';
+        modal_content = data.map((d, i) => {
+          return(
+            <div className="modal-list">
+              <div className="single-search-result">
+                <div className="single-search-result-title">
+                  {d.name}
                 </div>
-                <div>
-                  <div className="modal-title">Status</div>
-                  <div className="modal-value">{d.status}</div>
-                </div>
-                <div>
-                  <div className="modal-title">Ownership</div>
-                  <div className="modal-value">{d.ownership}</div>
-                </div>
-                <div>
-                  <div className="modal-title">NHIF accreditaion number</div>
-                  <div className="modal-value">{d.nhif_accreditation_no}</div>
+                <div className="single-search-result-values">
+                  <div className="half-width-parameter">
+                    <div className="single-parameter">
+                      <div className="parameter-label">Location</div>
+                      <p>{d.location}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Region</div>
+                      <p>{d.region}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">District</div>
+                      <p>{d.district}</p>
+                    </div>
+                  </div>
+                  <div className="half-width-parameter">
+                    <div className="single-parameter">
+                      <div className="parameter-label">Type</div>
+                      <p>{d.type}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Registration No.</div>
+                      <p>{d.registration_number}</p>
+                    </div>
+                    <div className="single-parameter">
+                      <div className="parameter-label">Registration Date</div>
+                      <p>{d.registration_date}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           )
         })
       } else if (this.props.cardType === 'medicine_prices'){
+        let buying_price = this.props.buying_price;
+        image = 'img/meds-icon-black.png';
         modal_content = [1].map((d, i) => {
           return(
-            <div>
-              <div className="modal-name">{data.drug.name}</div>
-              <div className="modal-content-left">
-                <div>
-                  <div className="modal-title">Strength</div>
-                  <div className="modal-value">{data.drug.strength}</div>
+            <div className="modal-list">
+              <div className="single-search-result">
+                <div className="single-search-result-title">
+                  You paid TZS {buying_price} <span className="above-price">- {data.price_check.buying_price_status} given price</span>
                 </div>
-                <div>
-                  <div className="modal-title">Form</div>
-                  <div className="modal-value">{data.drug.form}</div>
-                </div>
-              </div>
-              <div className="modal-content-right">
-                <div>
-                  <div className="modal-title">Buying price status</div>
-                  <div className="modal-value">{data.price_check.buying_price_status}</div>
-                </div>
-                <div>
-                  <div className="modal-title">Extra amount</div>
-                  <div className="modal-value">{data.price_check.extra_amount}</div>
+                <div className="single-search-result-values">
+                  <p className="single-search-result-values-para">{data.message}</p>
+                    
+                  <div className="med-details-label">Medicine details</div>
+
+                  <div className="full-width-parameter">
+                    <div className="single-parameter">
+                      <div className="parameter-label">Name</div>
+                      <p className="med-name">{data.drug.name}</p>
+                    </div>
+                  </div>
+                  <div className="full-width-parameter">
+                    <div className="single-parameter-inline">
+                      <div className="parameter-label">Strength</div>
+                      <p>{data.drug.strength}</p>
+                    </div>
+                    <div className="single-parameter-inline">
+                      <div className="parameter-label">Form</div>
+                      <p>{data.drug.form}</p>
+                    </div>
+                    <div className="single-parameter-inline">
+                      <div className="parameter-label">Unit of measure</div>
+                      <p>{data.drug.uom}</p>
+                    </div>
+                    <div className="single-parameter-inline">
+                      <div className="parameter-label">Price</div>
+                      <p>{data.drug.price}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -133,10 +204,13 @@ class Modal extends React.Component {
           <div className="protograph-close-text">x</div>
         </div>
         <div id="protograph_modal_card">
-          <div className="modal-card-title">
-            <img src="img/facilities-icon.png" style={{backgroundColor: 'black'}}/>{title}
-          </div>
-          <div className="protograph-modal-content">{modal_content}</div>
+           <div className="modal-card">
+            <div className="modal-title">
+              <img src={image} />
+              <span>{this.props.title}</span>
+            </div>
+            {modal_content}
+            </div>
         </div>
       </ReactModal>
     )
