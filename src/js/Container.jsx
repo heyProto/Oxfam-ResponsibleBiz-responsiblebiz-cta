@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Modal from "./Modal.js";
+import Select from 'react-select';
 
 export default class toCreditsCard extends React.Component {
   constructor(props) {
@@ -12,9 +13,10 @@ export default class toCreditsCard extends React.Component {
         card_data: {},
         configs: {}
       },
+      selectedOption: {},
       showModal: false,
       optionalConfigJSON: {},
-      image_count: 1
+      card_type: ''
     };
     this.showModal = this.showModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -39,14 +41,18 @@ export default class toCreditsCard extends React.Component {
         axios.get(this.props.dataURL)
       ];
       axios.all(items_to_fetch).then(axios.spread((card) => {
-        let stateVar = {
-          fetchingData: false,
-          dataJSON: {
-            card_data: card.data
-          },
-          optionalConfigJSON: {}
-        };
-        this.setState(stateVar);
+        axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
+          console.log(card, "card", response)
+          let stateVar = {
+            fetchingData: false,
+            dataJSON: {
+              card_data: card.data
+            },
+            drug_data: response.data,
+            optionalConfigJSON: {}
+          };
+          this.setState(stateVar);
+          })
       }));
     } else {
       // this.componentDidUpdate();
@@ -72,26 +78,70 @@ export default class toCreditsCard extends React.Component {
   }
 
   closeModal() {
-    // document.getElementById('.area-input').value = ''
     this.setState({
       showModal: false
     })
+  }
+
+  handleSelectOption(newSelectedOption, key){
+    let selectedOption = this.state.selectedOption;
+    selectedOption[key] = newSelectedOption; 
+    console.log(selectedOption, "newSelection")
+    this.setState({
+      selectedOption: selectedOption 
+    });   
   }
 
   getHealthFacilities(data){
     let api = data.api,
       value = document.querySelector('.area-input').value;
 
-    // console.log(value, api, api +"?q="+ value,  "-----")
     axios.get(api +"?q="+ value).then((response_data) => {
       console.log(response_data)
       this.setState({
-        responseData: response_data.data
+        responseData: response_data.data.facilities,
+        card_type: "health_facilities",
+        title: data.title
       })
     })
     this.showModal();
   }
 
+  getPharmacies(data){
+    // let api = data.api,
+    //   name = 
+    //   location = ;
+
+    // axios.get(api +"?q="+ value).then((response_data) => {
+    //   console.log(response_data)
+    //   this.setState({
+    //     responseData: response_data.data.facilities
+    //   })
+    // })
+    // this.showModal();
+  }
+
+  getMedicinePrices(data){
+    let drug_listing = data.listing_drugs_api,
+      drug_price = data.drug_price_api,
+      drug_id = 1,
+      dose = document.querySelector('.dose-input').value,
+      buying_price = document.querySelector('.price-input').value,
+      api = drug_price +"?drug_id="+drug_id+"&dose="+dose+"&buying_price="+buying_price;
+
+    console.log(api, "api")
+
+    axios.get(api).then((response_data) => {
+      console.log(response_data)
+      this.setState({
+        responseData: response_data.data,
+        card_type: "medicine_prices",
+        title: data.title
+      })
+    })
+    this.showModal();
+
+  }
 
   onClickFirstExpand(e){
     document.querySelector(".col-16-tool-strip").style.height = "250px"
@@ -107,10 +157,13 @@ export default class toCreditsCard extends React.Component {
       )
     }else{
       let data = this.state.dataJSON.card_data.data,
+        drug_data = this.state.drug_data,
+        selectedOption = this.state.selectedOption,
         card_1 = this.state.dataJSON.card_data.data.card_1,
         card_2 = this.state.dataJSON.card_data.data.card_2,
         card_3 = this.state.dataJSON.card_data.data.card_3,
         card_4 = this.state.dataJSON.card_data.data.card_4;
+      console.log(drug_data, "drug data")
       return(
         <div className="col-16-tool-strip" onClick={(e) => this.onClickFirstExpand(e)}>
           <div className="col-4-tool-card">
@@ -138,7 +191,7 @@ export default class toCreditsCard extends React.Component {
             <input type="text" name="location" className="location-input" placeholder="Search by location" />
             <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" />
             <div className="tool-call-to-action-area">
-              <div className="tool-call-to-action-button">
+              <div className="tool-call-to-action-button" onClick={(e) => this.getPharmacies(card_2)}>
                 Search
               </div>
             </div>
@@ -151,11 +204,24 @@ export default class toCreditsCard extends React.Component {
               <img src="img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <p>How much do you pay for drugs?</p>
-            <input type="text" name="drug-name" className="drug-name-input" placeholder="Drug Name" />
+            <div className="drug-name-dropdown">
+              <Select 
+                name="drug_name"
+                placeholder="Drug Name" 
+                value={selectedOption['drug_name'] && selectedOption['drug_name'].value}
+                onChange={(d)=>this.handleSelectOption(d,"drug_name")} 
+                options={drug_data.drugs.map((d)=>{
+                  let temp = {};
+                  temp.label = d.name;
+                  temp.value = d.name;
+                  return temp;
+                })}
+              />
+            </div>
             <input type="text" name="dose" className="dose-input" placeholder="No. of dose" />
             <input type="text" name="price" className="price-input" placeholder="Buying price" />
             <div className="tool-call-to-action-area">
-              <div className="tool-call-to-action-button">
+              <div className="tool-call-to-action-button" onClick={(e) => this.getMedicinePrices(card_3)}>
                 Search
               </div>
             </div>
@@ -181,6 +247,8 @@ export default class toCreditsCard extends React.Component {
             closeModal={this.closeModal}
             mode={this.state.mode}
             responseData={this.state.responseData}
+            cardType={this.state.card_type}
+            title={this.state.title}
           />
         </div>
       )
@@ -206,3 +274,5 @@ export default class toCreditsCard extends React.Component {
     }
   }
 }
+
+// <input type="text" name="drug-name" className="drug-name-input" placeholder="Drug Name" />

@@ -216,10 +216,11 @@ input:focus{
   margin: 0em 6px 0em 0em !important;
 }
 
-.modal-single-content .modal-name{
+.modal-name{
   color: #25408F;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: 500;
+  font-family: cabin;
 }
 
 .modal-single-content{
@@ -234,4 +235,25 @@ input:focus{
 .modal-content-right{
   display: inline-block;
   width: 50%;
+}
+
+.Select-control{
+  /*padding: 8px;*/
+  font-size: 14px;
+  font-family: "cabin";
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 0px;
+  background: #ffffff1a;
+  margin-top: 10px;
+  color: white;
+}
+
+.Select-placeholder{
+  color: white;
+  opacity: 0.4;
+}
+
+.Select.has-value.Select--single>.Select-control .Select-value .Select-value-label{
+  color: white;
 }

@@ -5,7 +5,7 @@
       "text_color": "white"
     },
     "card_1": {
-      "title": "HEALTH FACILITIES",
+      "title": "Health Facilities",
       "api": "https://healthlocator.codefortanzania.org/api/facilities"
     },
     "card_2": {
@@ -14,8 +14,8 @@
     },
     "card_3": {
       "title": "MEDICINE PRICES",
-      "listing_drugs_api": "https://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/searchpharmacies",
-      "drug_price_api": " https://medprices-api.codefortanzania.org/api/drugs"
+      "listing_drugs_api": "https://medprices-api.codefortanzania.org/api/drugs",
+      "drug_price_api": "https://medprices-api.codefortanzania.org/api/checkprice"
     },
     "card_4": {
       "title": "EShangazi",
