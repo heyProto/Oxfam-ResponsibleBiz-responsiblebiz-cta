@@ -23,6 +23,13 @@ class Modal extends React.Component {
   }
 
   render() {
+    let classname;
+    console.log(this.props.mode, "mode")
+    if (this.props.mode === 'col4'){
+      classname = "column-4"
+    } else {
+      classname = "col-7"
+    }
     let modal_content,
       image,
       title;
@@ -182,7 +189,7 @@ class Modal extends React.Component {
         onAfterOpen={this.afterOpen}
         closeTimeoutMS={0}
         overlayClassName="protograph-modal-overlay"
-        className="proto-col col-7 protograph-modal"
+        className={`proto-col ${classname} protograph-modal`}
         shouldFocusAfterRender={false}
         shouldCloseOnOverlayClick={false}
         shouldCloseOnEsc={false}

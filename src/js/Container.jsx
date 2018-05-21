@@ -162,8 +162,8 @@ export default class toCreditsCard extends React.Component {
     document.querySelectorAll('.col-4-tool-card').forEach((d,i) => {
       document.querySelectorAll('.col-4-tool-card')[i].style.height = 'auto'
     })
-    document.querySelector('#card_1_tool').style.height = "250px"
     document.querySelector('#card_1_tool').style.transition = "0.4s"
+    document.querySelector('#card_1_tool').style.height = "250px"
   }
 
   expandOnCard2Click(e){
@@ -174,8 +174,8 @@ export default class toCreditsCard extends React.Component {
     document.querySelectorAll('.col-4-tool-card').forEach((d,i) => {
       document.querySelectorAll('.col-4-tool-card')[i].style.height = 'auto'
     })
-    document.querySelector('#card_2_tool').style.height = "250px"
     document.querySelector('#card_2_tool').style.transition = "0.4s"
+    document.querySelector('#card_2_tool').style.height = "250px"
   }
 
   expandOnCard3Click(e) {
@@ -186,8 +186,8 @@ export default class toCreditsCard extends React.Component {
     document.querySelectorAll('.col-4-tool-card').forEach((d,i) => {
       document.querySelectorAll('.col-4-tool-card')[i].style.height = 'auto'
     })
-    document.querySelector('#card_3_tool').style.height = "250px"
     document.querySelector('#card_3_tool').style.transition = "0.4s"
+    document.querySelector('#card_3_tool').style.height = "250px"
   }
 
   renderCol16(){
@@ -394,7 +394,7 @@ export default class toCreditsCard extends React.Component {
           <Modal
             showModal={this.state.showModal}
             closeModal={this.closeModal}
-            mode={this.state.mode}
+            mode={this.props.mode}
             dataJSON={data}
             responseData={this.state.responseData}
             cardType={this.state.card_type}

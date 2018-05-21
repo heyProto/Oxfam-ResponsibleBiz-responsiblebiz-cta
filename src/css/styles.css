@@ -149,10 +149,10 @@ input:focus{
   width: 300px;
   box-sizing: border-box;
   background: #25408F;
-  display: inline-block;
-  /*height: 70px;*/
   overflow: hidden;
   transition: 0.3s ease-in;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .horizontal-divider{
@@ -211,6 +211,15 @@ input:focus{
   border-radius: 4px;
   letter-spacing: 0.5px;
   cursor: pointer;
+}
+
+.column-4 .modal-card{
+  width: 300px;
+}
+
+.column-4{
+  margin-left: 0px !important;
+  transform: translate(0, 0);
 }
 
 /*====== Dropdown css =====*/
