@@ -13,6 +13,9 @@ class Modal extends React.Component {
     console.log("after open")
     // document.querySelector('.Select-value span').style.opacity = 1;
     document.body.style['overflow-y'] = 'hidden';
+    if(typeof this.props.clickCallback === 'function') {
+      this.props.clickCallback();
+    }
   }
 
   handleRequestClose() {
@@ -23,6 +26,9 @@ class Modal extends React.Component {
     document.querySelector('.pharmacie-name-input').disabled = false;
     document.querySelector('.location-input').disabled = false;
     document.body.style['overflow-y'] = 'auto';
+    if(typeof this.props.clickCallback === 'function') {
+      this.props.clickCallback();
+    }
   }
 
   render() {

@@ -334,6 +334,7 @@ export default class toCreditsCard extends React.Component {
             cardType={this.state.card_type}
             title={this.state.title}
             buying_price={this.state.buying_price}
+            clickCallback={this.props.clickCallback}
           />
         </div>
       )
