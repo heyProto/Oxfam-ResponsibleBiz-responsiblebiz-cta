@@ -96,64 +96,67 @@ export default class toCreditsCard extends React.Component {
   }
 
   getHealthFacilities(data){
-    let api = data.api,
-      value = document.querySelector('.area-input').value;
-
-    axios.get(api +"?q="+ value).then((response_data) => {
-      // console.log(response_data)
-      this.setState({
-        responseData: response_data.data.facilities,
-        card_type: "health_facilities",
-        title: data.title
+    let value = document.querySelector('.area-input').value;
+    if (value !== ''){
+      let api = data.api;      
+      axios.get(api +"?q="+ value).then((response_data) => {
+        // console.log(response_data)
+        this.setState({
+          responseData: response_data.data.facilities,
+          card_type: "health_facilities",
+          title: data.title
+        })
       })
-    })
-    this.showModal();
+      this.showModal();
+    }
   }
 
   getPharmacies(data){
-    console.log(data, "data")
     let location = document.querySelector('.location-input').value,
-      name = document.querySelector('.pharmacie-name-input').value,
-      search_by, value
+      name = document.querySelector('.pharmacie-name-input').value;
 
-    if (location === ''){
-      search_by = 'name';
-      value = document.querySelector('.pharmacie-name-input').value;
-    }
-    if (name === ''){
-      search_by = 'location';
-      value = document.querySelector('.location-input').value;
-    }
+    if (location !== '' || name !== ''){
+      let search_by, value;
+      if (location === ''){
+        search_by = 'name';
+        value = document.querySelector('.pharmacie-name-input').value;
+      }
+      if (name === ''){
+        search_by = 'location';
+        value = document.querySelector('.location-input').value;
+      }
 
-    axios.get(data.api + "?search_by=" +search_by+ "&value=" +value).then((response_data) => {
-      console.log(response_data)
-      this.setState({
-        responseData: response_data.data.pharmacies,
-        card_type: "pharmacies",
-        title: data.title
+      axios.get(data.api + "?search_by=" +search_by+ "&value=" +value).then((response_data) => {
+        console.log(response_data)
+        this.setState({
+          responseData: response_data.data.pharmacies,
+          card_type: "pharmacies",
+          title: data.title
+        })
       })
-    })
-    this.showModal();
+      this.showModal();
+    }
   }
 
   getMedicinePrices(data){
-    let drug_listing = data.listing_drugs_api,
-      drug_price = data.drug_price_api,
-      drug_id = this.state.selectedOption.drug_name.drug_id,
+    let drug_id = this.state.selectedOption.drug_name.drug_id,
       dose = document.querySelector('.dose-input').value,
-      buying_price = document.querySelector('.price-input').value,
-      api = drug_price +"?drug_id="+drug_id+"&dose="+dose+"&buying_price="+buying_price;
+      buying_price = document.querySelector('.price-input').value;
+    if (drug_id !== '' && dose !== '' && buying_price !== '') {
+      let drug_listing = data.listing_drugs_api,
+        drug_price = data.drug_price_api,     
+        api = drug_price +"?drug_id="+drug_id+"&dose="+dose+"&buying_price="+buying_price;
 
-    axios.get(api).then((response_data) => {
-      this.setState({
-        responseData: response_data.data,
-        card_type: "medicine_prices",
-        title: data.title,
-        buying_price: buying_price
+      axios.get(api).then((response_data) => {
+        this.setState({
+          responseData: response_data.data,
+          card_type: "medicine_prices",
+          title: data.title,
+          buying_price: buying_price
+        })
       })
-    })
-    this.showModal();
-
+      this.showModal();
+    }
   }
 
   onClickFirstExpand(e){
