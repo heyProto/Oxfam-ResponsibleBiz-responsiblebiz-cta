@@ -8,88 +8,92 @@
       "id": "/properties/data",
       "type": "object",
       "properties": {
-        "config_json": {
-          "id": "/properties/data/properties/config_json",
-          "type": "object",
-          "properties": {
-            "card_background_color": {
-              "$id": "/properties/data/properties/config_json/properties/card_background_color",
-              "type": "string",
-              "title": "Card Background Color"
-            },
-            "text_color": {
-              "id": "/properties/data/properties/config_json/properties/text_color",
-              "type": "string",
-              "title": "Text Color"
-            }
-          }
-        },
         "card_1": {
           "id": "/properties/data/properties/card_1",
           "type": "object",
+          "title": "Card 1",
           "properties": {
             "title": {
               "id": "/properties/data/properties/card_1/properties/title",
               "type": "string",
-              "title": "Card 1 - Title"
+              "title": "Title"
             },
             "api": {
               "id": "/properties/data/properties/card_1/properties/api",
               "type": "string",
-              "title": "Card 1 - API"
+              "title": "API"
             }
           }
         },
         "card_2": {
           "id": "/properties/data/properties/card_2",
           "type": "object",
+           "title": "Card 2",
           "properties": {
             "title": {
               "id": "/properties/data/properties/card_2/properties/title",
               "type": "string",
-              "title": "Card 2 - Title"
+              "title": "Title"
             },
             "api": {
               "id": "/properties/data/properties/card_2/properties/api",
               "type": "string",
-              "title": "Card 2 - API"
+              "title": "API"
             }
           }
         },
         "card_3": {
           "id": "/properties/data/properties/card_3",
           "type": "object",
+          "title": "Card 3",
           "properties": {
             "title": {
               "id": "/properties/data/properties/card_3/properties/title",
               "type": "string",
-              "title": "Card 3 - Title"
+              "title": "Title"
             },
             "listing_drugs_api": {
               "id": "/properties/data/properties/card_3/properties/listing_drugs_api",
               "type": "string",
-              "title": "Card 3 - Drug List API"
+              "title": "Drug List API"
             },
             "drug_price_api": {
               "id": "/properties/data/properties/card_3/properties/drug_price_api",
               "type": "string",
-              "title": "Card 3 - Drug Price API"
+              "title": "Drug Price API"
             }
           }
         },
         "card_4": {
           "id": "/properties/data/properties/card_4",
           "type": "object",
+          "title": "Card 4",
           "properties": {
             "title": {
               "id": "/properties/data/properties/card_4/properties/title",
               "type": "string",
-              "title": "Card 4 - Title"
+              "title": "Title"
             },
             "url": {
               "id": "/properties/data/properties/card_4/properties/url",
               "type": "string",
-              "title": "Card 4 - URL"
+              "title": "URL"
+            }
+          }
+        },
+        "config_json": {
+          "id": "/properties/data/properties/config_json",
+          "type": "object",
+          "properties": {
+            "card_background_color": {
+              "id": "/properties/data/properties/config_json/properties/card_background_color",
+              "type": "color",
+              "title": "Card Background Color"
+            },
+            "text_color": {
+              "id": "/properties/data/properties/config_json/properties/text_color",
+              "type": "color",
+              "title": "Text Color"
             }
           }
         }
