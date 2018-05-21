@@ -10,7 +10,7 @@ class Modal extends React.Component {
   }
 
   afterOpen() {
-    console.log("after open")
+    console.log("after open", this.props.clickCallback)
     // document.querySelector('.Select-value span').style.opacity = 1;
     document.body.style['overflow-y'] = 'hidden';
     if(typeof this.props.clickCallback === 'function') {
