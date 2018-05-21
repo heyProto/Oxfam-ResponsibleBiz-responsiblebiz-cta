@@ -366,8 +366,8 @@ export default class toCreditsCard extends React.Component {
             </div>
             <div id="card_2" className="col-4-card-content">
               <p>Find pharmacies</p>
-              <input type="text" name="location" className="location-input" placeholder="Search by location" />
-              <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" />
+              <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()}/>
+              <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" onChange={(e) => this.onChangeName()} />
               <div className="tool-call-to-action-area">
                 <div className="tool-call-to-action-button" onClick={(e) => this.getPharmacies(card_2)}>
                   Search

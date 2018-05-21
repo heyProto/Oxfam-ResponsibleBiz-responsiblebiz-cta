@@ -40,8 +40,6 @@
           selector: document.querySelector('#article-div'),
           data_url: data_base_path + "/data.json",
           domain: domain_name,
-          districts: "https://cdn.protograph.pykih.com/Assets/districts.json",
-          states: "https://cdn.protograph.pykih.com/Assets/states.json",
           site_config_url: base_url + '/header.json'
         })
         renderWithMode(mode);
@@ -51,9 +49,6 @@
         switch(mode){
           case 'col16':
             x.renderCol16();
-            break;
-          case 'col7':
-            x.renderCol7();
             break;
           case 'col4':
             x.renderCol4();
