@@ -235,9 +235,9 @@ export default class toCreditsCard extends React.Component {
         <div className="col-16-tool-strip" onClick={(e) => this.onClickFirstExpand(e)}>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/facilities-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon.png" />
               {card_1.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon"/>
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
             </div>
             <p>Find the nearest health facilities around you</p>
             <input type="text" name="area" className="area-input" placeholder="Start typing the name of your area" />
@@ -250,9 +250,9 @@ export default class toCreditsCard extends React.Component {
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/pharmacies-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/pharmacies-icon.png" />
               {card_2.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon" />
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <p>Find pharmacies</p>
             <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()}/>
@@ -266,9 +266,9 @@ export default class toCreditsCard extends React.Component {
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/meds-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/meds-icon.png" />
               {card_3.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon" />
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <p>How much do you pay for drugs?</p>
             <div className="drug-name-dropdown">
@@ -297,12 +297,12 @@ export default class toCreditsCard extends React.Component {
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/eshangazi-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-icon.png" />
               {card_4.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon"/>
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
             </div>
             <div className="e-shangazi-image-area">
-              <img src="img/eshangazi-logo.png" />
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-logo.png" />
             </div>
             <div className="tool-call-to-action-area">
               <a href={card_4.url} target="_blank"><div className="tool-call-to-action-button">
@@ -343,9 +343,9 @@ export default class toCreditsCard extends React.Component {
         <div className="col-4-tool-strip col-4-mobile">
           <div id="card_1_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard1Click(e)}>
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/facilities-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon.png" />
               {card_1.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon"/>
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
             </div>
             <div id="card_1" className="col-4-card-content">
               <p>Find the nearest health facilities around you</p>
@@ -360,9 +360,9 @@ export default class toCreditsCard extends React.Component {
           <div className="horizontal-divider"></div>
           <div id="card_2_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard2Click(e)}>
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/pharmacies-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/pharmacies-icon.png" />
               {card_2.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon" />
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <div id="card_2" className="col-4-card-content">
               <p>Find pharmacies</p>
@@ -378,9 +378,9 @@ export default class toCreditsCard extends React.Component {
           <div className="horizontal-divider"></div>
           <div id="card_3_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard3Click(e)}>
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/meds-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/meds-icon.png" />
               {card_3.title}
-              <img src="img/down-arrow.png" className="down-arrow-icon" />
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <div id="card_3" className="col-4-card-content">
               <p>How much do you pay for drugs?</p>
@@ -410,7 +410,7 @@ export default class toCreditsCard extends React.Component {
           <div className="horizontal-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img className="tool-card-img" src="img/eshangazi-icon.png" />
+              <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-icon.png" />
               {card_4.title}
             </div>
             <div className="tool-call-to-action-area-talk">

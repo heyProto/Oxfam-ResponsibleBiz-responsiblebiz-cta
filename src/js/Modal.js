@@ -43,7 +43,7 @@ class Modal extends React.Component {
       let data = this.props.responseData;
       title = this.props.title;
       if (this.props.cardType === 'health_facilities'){
-        image = 'img/facilities-icon-black.png';
+        image = 'https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon-black.png';
         modal_content = data.map((d,i) => {
           return(          
             <div className="modal-list">
@@ -97,7 +97,7 @@ class Modal extends React.Component {
           )
         })
       } else if (this.props.cardType === 'pharmacies'){
-        image = 'img/pharmacies-icon-black.png';
+        image = 'https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/pharmacies-icon-black.png';
         modal_content = data.map((d, i) => {
           return(
             <div className="modal-list">
@@ -141,7 +141,7 @@ class Modal extends React.Component {
         })
       } else if (this.props.cardType === 'medicine_prices'){
         let buying_price = this.props.buying_price;
-        image = 'img/meds-icon-black.png';
+        image = 'https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/meds-icon-black.png';
         modal_content = [1].map((d, i) => {
           return(
             <div className="modal-list">
