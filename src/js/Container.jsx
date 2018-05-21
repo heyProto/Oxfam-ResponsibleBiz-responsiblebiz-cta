@@ -139,13 +139,13 @@ export default class toCreditsCard extends React.Component {
   }
 
   getMedicinePrices(data){
-    let drug_id = this.state.selectedOption.drug_name.drug_id,
+    let drug_name = this.state.selectedOption.drug_name,
       dose = document.querySelector('.dose-input').value,
       buying_price = document.querySelector('.price-input').value;
-    if (drug_id !== '' && dose !== '' && buying_price !== '') {
+    if (drug_name !== undefined && dose !== '' && buying_price !== '') {
       let drug_listing = data.listing_drugs_api,
         drug_price = data.drug_price_api,     
-        api = drug_price +"?drug_id="+drug_id+"&dose="+dose+"&buying_price="+buying_price;
+        api = drug_price +"?drug_id="+drug_name.drug_id+"&dose="+dose+"&buying_price="+buying_price;
 
       axios.get(api).then((response_data) => {
         this.setState({
