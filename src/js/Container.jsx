@@ -163,7 +163,10 @@ export default class toCreditsCard extends React.Component {
     document.querySelector(".col-16-tool-strip").style.height = "250px"
     document.querySelectorAll(".verticle-divider").forEach((d, i) => {
       document.querySelectorAll(".verticle-divider")[i].style.height = "250px"
-    })   
+    }) 
+    if(typeof this.props.clickCallback === 'function') {
+      this.props.clickCallback();
+    }  
   }
 
   expandOnCard1Click(e){
@@ -176,6 +179,9 @@ export default class toCreditsCard extends React.Component {
     })
     document.querySelector('#card_1_tool').style.transition = "0.4s"
     document.querySelector('#card_1_tool').style.height = "250px"
+    if(typeof this.props.clickCallback === 'function') {
+      this.props.clickCallback();
+    }
   }
 
   expandOnCard2Click(e){
@@ -188,6 +194,9 @@ export default class toCreditsCard extends React.Component {
     })
     document.querySelector('#card_2_tool').style.transition = "0.4s"
     document.querySelector('#card_2_tool').style.height = "250px"
+    if(typeof this.props.clickCallback === 'function') {
+      this.props.clickCallback();
+    }
   }
 
   expandOnCard3Click(e) {
@@ -200,6 +209,9 @@ export default class toCreditsCard extends React.Component {
     })
     document.querySelector('#card_3_tool').style.transition = "0.4s"
     document.querySelector('#card_3_tool').style.height = "250px"
+    if(typeof this.props.clickCallback === 'function') {
+      this.props.clickCallback();
+    }
   }
 
   onChangeLocation(){
