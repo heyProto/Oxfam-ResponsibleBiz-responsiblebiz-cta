@@ -28,6 +28,9 @@ export default class toCreditsCard extends React.Component {
     if (this.props.optionalConfigJSON) {
       stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
     }
+    if (this.props.drug_data) {
+      stateVar.drug_data = this.props.drug_data;
+    }
     if (this.props.siteConfigs) {
       stateVar.siteConfigs = this.props.siteConfigs;
     }
@@ -203,7 +206,7 @@ export default class toCreditsCard extends React.Component {
         card_2 = this.state.dataJSON.card_data.data.card_2,
         card_3 = this.state.dataJSON.card_data.data.card_3,
         card_4 = this.state.dataJSON.card_data.data.card_4;
-      console.log(drug_data, "drug data")
+      console.log(this.state, drug_data, "drug data")
       return(
         <div className="col-16-tool-strip" onClick={(e) => this.onClickFirstExpand(e)}>
           <div className="col-4-tool-card">

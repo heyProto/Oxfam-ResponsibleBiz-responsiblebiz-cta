@@ -245,6 +245,10 @@ input:focus{
   color: white;
 }
 
+.Select-input input{
+  color: black;
+}
+
 /*====== modal css =====*/
 
 .protograph-modal-overlay {

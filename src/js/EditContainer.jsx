@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import CreditsCard from './Container.jsx';
+import HealthCard from './Container.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
-export default class EditCreditsCard extends React.Component {
+export default class EditHealthCard extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -34,7 +34,7 @@ export default class EditCreditsCard extends React.Component {
       optionalConfigJSON: this.state.dataJSON.configs,
       optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
-    getDataObj["name"] = "Credits card"; // Reduces the name to ensure the slug does not get too long
+    getDataObj["name"] = "Health Card"; // Reduces the name to ensure the slug does not get too long
     return getDataObj;
   }
 
@@ -47,17 +47,21 @@ export default class EditCreditsCard extends React.Component {
         axios.get(this.props.optionalConfigSchemaURL),
         axios.get(this.props.uiSchemaURL)
       ]).then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema) => {
-          let stateVar = {
-            dataJSON: {
-              card_data: card.data,
-              configs: opt_config.data
-            },
-            schemaJSON: schema.data,
-            uiSchemaJSON: uiSchema.data,
-            optionalConfigJSON: opt_config.data,
-            optionalConfigSchemaJSON: opt_config_schema.data
-          }
-          this.setState(stateVar);
+          axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
+            console.log(card, "card", response)
+            let stateVar = {
+              dataJSON: {
+                card_data: card.data,
+                configs: opt_config.data
+              },
+              drug_data: response.data,
+              schemaJSON: schema.data,
+              uiSchemaJSON: uiSchema.data,
+              optionalConfigJSON: opt_config.data,
+              optionalConfigSchemaJSON: opt_config_schema.data
+            }
+            this.setState(stateVar);
+          })
         }))
         .catch((error) => {
           console.error(error);
@@ -178,6 +182,7 @@ export default class EditCreditsCard extends React.Component {
     if (this.state.schemaJSON === undefined) {
       return(<div>Loading</div>)
     } else {
+      console.log(this.state.drug_data, "drugs")
       return (
         <div className="proto-container">
           <div className="ui grid form-layout">
@@ -186,7 +191,7 @@ export default class EditCreditsCard extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    toCEEWHero
+                    proC4Ahealthtools
                   </div>
                 </div>
                 <JSONSchemaForm
@@ -209,12 +214,6 @@ export default class EditCreditsCard extends React.Component {
                     >
                       col16
                     </a>
-                    <a className={`item ${this.state.mode === 'col7' ? 'active' : ''}`}
-                      data-mode='col7'
-                      onClick={this.toggleMode}
-                    >
-                      col7
-                    </a>
                     <a className={`item ${this.state.mode === 'col4' ? 'active' : ''}`}
                       data-mode='col4'
                       onClick={this.toggleMode}
@@ -225,10 +224,11 @@ export default class EditCreditsCard extends React.Component {
                 </div>
                 {
                   this.state.mode == "blank" ? <div /> : <div className="protograph-app-holder">
-                    <CreditsCard
+                    <HealthCard
                       mode={this.state.mode}
                       dataJSON={this.state.dataJSON}
                       domain={this.props.domain}
+                      drug_data={this.state.drug_data}
                       optionalConfigJSON={this.state.optionalConfigJSON}
                     />
                   </div>
