@@ -56,9 +56,10 @@
   color: white;
 }
 
-.tool-card-title img{
+.tool-card-img{
   margin-right: 10px;
   height: 20px;
+  /*height: 35px;*/
   padding-top: 13px;
   display: inline-block;
   position: relative;
@@ -337,7 +338,7 @@ input:focus{
   float: left;
   width: 24px;
   margin-right: 8px;
-  margin-top: -3px;
+  /*margin-top: -3px;*/
 }
 
 .modal-title{

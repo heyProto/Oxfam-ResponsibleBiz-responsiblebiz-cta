@@ -11,6 +11,7 @@ class Modal extends React.Component {
 
   afterOpen() {
     console.log("after open")
+    // document.querySelector('.Select-value span').style.opacity = 1;
     document.body.style['overflow-y'] = 'hidden';
   }
 
@@ -19,12 +20,13 @@ class Modal extends React.Component {
     document.querySelectorAll('.col-4-tool-card input').forEach((d, i) => {
       document.querySelectorAll('.col-4-tool-card input')[i].value = '';
     })
+    document.querySelector('.pharmacie-name-input').disabled = false;
+    document.querySelector('.location-input').disabled = false;
     document.body.style['overflow-y'] = 'auto';
   }
 
   render() {
     let classname;
-    console.log(this.props.mode, "mode")
     if (this.props.mode === 'col4'){
       classname = "column-4"
     } else {

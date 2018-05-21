@@ -45,7 +45,7 @@ export default class toCreditsCard extends React.Component {
       ];
       axios.all(items_to_fetch).then(axios.spread((card) => {
         axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
-          console.log(card, "card", response)
+          // console.log(card, "card", response)
           let stateVar = {
             fetchingData: false,
             dataJSON: {
@@ -89,7 +89,7 @@ export default class toCreditsCard extends React.Component {
   handleSelectOption(newSelectedOption, key){
     let selectedOption = this.state.selectedOption;
     selectedOption[key] = newSelectedOption; 
-    console.log(selectedOption, "newSelection")
+    // console.log(selectedOption, "newSelection")
     this.setState({
       selectedOption: selectedOption 
     });   
@@ -100,7 +100,7 @@ export default class toCreditsCard extends React.Component {
       value = document.querySelector('.area-input').value;
 
     axios.get(api +"?q="+ value).then((response_data) => {
-      console.log(response_data)
+      // console.log(response_data)
       this.setState({
         responseData: response_data.data.facilities,
         card_type: "health_facilities",
@@ -111,12 +111,21 @@ export default class toCreditsCard extends React.Component {
   }
 
   getPharmacies(data){
-    let api = data.api,
-      location = document.querySelector('.location-input').value,
+    console.log(data, "data")
+    let location = document.querySelector('.location-input').value,
       name = document.querySelector('.pharmacie-name-input').value,
-      api_url = api + "?search_by=name" + "&query=" + name;
+      search_by, value
 
-    axios.get(api_url).then((response_data) => {
+    if (location === ''){
+      search_by = 'name';
+      value = document.querySelector('.pharmacie-name-input').value;
+    }
+    if (name === ''){
+      search_by = 'location';
+      value = document.querySelector('.location-input').value;
+    }
+
+    axios.get(data.api + "?search_by=" +search_by+ "&value=" +value).then((response_data) => {
       console.log(response_data)
       this.setState({
         responseData: response_data.data.pharmacies,
@@ -130,15 +139,12 @@ export default class toCreditsCard extends React.Component {
   getMedicinePrices(data){
     let drug_listing = data.listing_drugs_api,
       drug_price = data.drug_price_api,
-      drug_id = 1,
+      drug_id = this.state.selectedOption.drug_name.drug_id,
       dose = document.querySelector('.dose-input').value,
       buying_price = document.querySelector('.price-input').value,
       api = drug_price +"?drug_id="+drug_id+"&dose="+dose+"&buying_price="+buying_price;
 
-    console.log(api, "api")
-
     axios.get(api).then((response_data) => {
-      console.log(response_data)
       this.setState({
         responseData: response_data.data,
         card_type: "medicine_prices",
@@ -193,6 +199,24 @@ export default class toCreditsCard extends React.Component {
     document.querySelector('#card_3_tool').style.height = "250px"
   }
 
+  onChangeLocation(){
+    let val = document.querySelector('.location-input').value
+    if (val !== ''){
+      document.querySelector('.pharmacie-name-input').disabled = true;
+    } else {
+      document.querySelector('.pharmacie-name-input').disabled = false;
+    }
+  }
+
+  onChangeName(){
+    let val = document.querySelector('.pharmacie-name-input').value
+    if (val !== ''){
+      document.querySelector('.location-input').disabled = true;
+    } else {
+      document.querySelector('.location-input').disabled = false;
+    }
+  }
+
   renderCol16(){
     if(this.state.fetchingData){
       return(
@@ -206,12 +230,12 @@ export default class toCreditsCard extends React.Component {
         card_2 = this.state.dataJSON.card_data.data.card_2,
         card_3 = this.state.dataJSON.card_data.data.card_3,
         card_4 = this.state.dataJSON.card_data.data.card_4;
-      console.log(this.state, drug_data, "drug data")
+      // console.log(this.state, drug_data, "drug data")
       return(
         <div className="col-16-tool-strip" onClick={(e) => this.onClickFirstExpand(e)}>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img src="img/facilities-icon.png" />
+              <img className="tool-card-img" src="img/facilities-icon.png" />
               {card_1.title}
               <img src="img/down-arrow.png" className="down-arrow-icon"/>
             </div>
@@ -226,13 +250,13 @@ export default class toCreditsCard extends React.Component {
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img src="img/pharmacies-icon.png" />
+              <img className="tool-card-img" src="img/pharmacies-icon.png" />
               {card_2.title}
               <img src="img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <p>Find pharmacies</p>
-            <input type="text" name="location" className="location-input" placeholder="Search by location" />
-            <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" />
+            <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()}/>
+            <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" onChange={(e) => this.onChangeName()}/>
             <div className="tool-call-to-action-area">
               <div className="tool-call-to-action-button" onClick={(e) => this.getPharmacies(card_2)}>
                 Search
@@ -242,7 +266,7 @@ export default class toCreditsCard extends React.Component {
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img src="img/meds-icon.png" />
+              <img className="tool-card-img" src="img/meds-icon.png" />
               {card_3.title}
               <img src="img/down-arrow.png" className="down-arrow-icon" />
             </div>
@@ -253,10 +277,11 @@ export default class toCreditsCard extends React.Component {
                 placeholder="Drug Name" 
                 value={selectedOption['drug_name'] && selectedOption['drug_name'].value}
                 onChange={(d)=>this.handleSelectOption(d,"drug_name")} 
-                options={drug_data.drugs.map((d)=>{
+                options={drug_data.drugs.map((d, i)=>{
                   let temp = {};
                   temp.label = d.name;
                   temp.value = d.name;
+                  temp.drug_id = i;
                   return temp;
                 })}
               />
@@ -272,7 +297,7 @@ export default class toCreditsCard extends React.Component {
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img src="img/eshangazi-icon.png" />
+              <img className="tool-card-img" src="img/eshangazi-icon.png" />
               {card_4.title}
               <img src="img/down-arrow.png" className="down-arrow-icon"/>
             </div>
@@ -318,7 +343,7 @@ export default class toCreditsCard extends React.Component {
         <div className="col-4-tool-strip col-4-mobile">
           <div id="card_1_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard1Click(e)}>
             <div className="tool-card-title">
-              <img src="img/facilities-icon.png" />
+              <img className="tool-card-img" src="img/facilities-icon.png" />
               {card_1.title}
               <img src="img/down-arrow.png" className="down-arrow-icon"/>
             </div>
@@ -335,7 +360,7 @@ export default class toCreditsCard extends React.Component {
           <div className="horizontal-divider"></div>
           <div id="card_2_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard2Click(e)}>
             <div className="tool-card-title">
-              <img src="img/pharmacies-icon.png" />
+              <img className="tool-card-img" src="img/pharmacies-icon.png" />
               {card_2.title}
               <img src="img/down-arrow.png" className="down-arrow-icon" />
             </div>
@@ -353,7 +378,7 @@ export default class toCreditsCard extends React.Component {
           <div className="horizontal-divider"></div>
           <div id="card_3_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard3Click(e)}>
             <div className="tool-card-title">
-              <img src="img/meds-icon.png" />
+              <img className="tool-card-img" src="img/meds-icon.png" />
               {card_3.title}
               <img src="img/down-arrow.png" className="down-arrow-icon" />
             </div>
@@ -385,7 +410,7 @@ export default class toCreditsCard extends React.Component {
           <div className="horizontal-divider"></div>
           <div className="col-4-tool-card">
             <div className="tool-card-title">
-              <img src="img/eshangazi-icon.png" />
+              <img className="tool-card-img" src="img/eshangazi-icon.png" />
               {card_4.title}
             </div>
             <div className="tool-call-to-action-area-talk">

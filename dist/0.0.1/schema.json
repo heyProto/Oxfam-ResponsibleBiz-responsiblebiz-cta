@@ -7,6 +7,7 @@
     "data": {
       "id": "/properties/data",
       "type": "object",
+      "title": "Data",
       "properties": {
         "card_1": {
           "id": "/properties/data/properties/card_1",
@@ -84,6 +85,7 @@
         "config_json": {
           "id": "/properties/data/properties/config_json",
           "type": "object",
+          "title": "Configurations",
           "properties": {
             "card_background_color": {
               "id": "/properties/data/properties/config_json/properties/card_background_color",
