@@ -106,8 +106,8 @@ export default class toCreditsCard extends React.Component {
           card_type: "health_facilities",
           title: data.title
         })
+        this.showModal();
       })
-      this.showModal();
     }
   }
 
@@ -133,8 +133,8 @@ export default class toCreditsCard extends React.Component {
           card_type: "pharmacies",
           title: data.title
         })
+        this.showModal();
       })
-      this.showModal();
     }
   }
 
@@ -154,8 +154,8 @@ export default class toCreditsCard extends React.Component {
           title: data.title,
           buying_price: buying_price
         })
+        this.showModal();
       })
-      this.showModal();
     }
   }
 
@@ -168,6 +168,10 @@ export default class toCreditsCard extends React.Component {
       this.props.selector.style.height = "250px"
       this.props.clickCallback();
     }  
+  }
+
+  onClickClose(e){
+
   }
 
   expandOnCard1Click(e){

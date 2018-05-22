@@ -10,8 +10,6 @@ class Modal extends React.Component {
   }
 
   afterOpen() {
-    // console.log("after open", this.props.clickCallback)
-    // document.querySelector('.Select-value span').style.opacity = 1;
     document.body.style['overflow-y'] = 'hidden';
     if(typeof this.props.clickCallback === 'function') {
       this.props.selector.style.height = "500px";
@@ -43,6 +41,7 @@ class Modal extends React.Component {
     let modal_content, background_color, text_color,
       image,
       title;
+    console.log(this.props.responseData, "this.props.responseData")
     if (this.props.responseData === undefined){
       modal_content = ''
       title =''
