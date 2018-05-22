@@ -127,7 +127,7 @@ export default class toCreditsCard extends React.Component {
       }
 
       axios.get(data.api + "?search_by=" +search_by+ "&value=" +value).then((response_data) => {
-        console.log(response_data)
+        // console.log(response_data)
         this.setState({
           responseData: response_data.data.pharmacies,
           card_type: "pharmacies",
@@ -164,8 +164,8 @@ export default class toCreditsCard extends React.Component {
     document.querySelectorAll(".verticle-divider").forEach((d, i) => {
       document.querySelectorAll(".verticle-divider")[i].style.height = "250px"
     }) 
-    this.props.selector.style.height = "250px"
     if(typeof this.props.clickCallback === 'function') {
+      this.props.selector.style.height = "250px"
       this.props.clickCallback();
     }  
   }
@@ -242,51 +242,53 @@ export default class toCreditsCard extends React.Component {
       let data = this.state.dataJSON.card_data.data,
         drug_data = this.state.drug_data,
         selectedOption = this.state.selectedOption,
-        card_1 = this.state.dataJSON.card_data.data.card_1,
-        card_2 = this.state.dataJSON.card_data.data.card_2,
-        card_3 = this.state.dataJSON.card_data.data.card_3,
-        card_4 = this.state.dataJSON.card_data.data.card_4;
+        card_1 = data.card_1,
+        card_2 = data.card_2,
+        card_3 = data.card_3,
+        card_4 = data.card_4,
+        background_color = data.configuration.card_background_color,
+        text_color = data.configuration.text_color;
       // console.log(this.state, drug_data, "drug data")
       return(
-        <div className="col-16-tool-strip" onClick={(e) => this.onClickFirstExpand(e)}>
+        <div className="col-16-tool-strip" style={{background: background_color}} onClick={(e) => this.onClickFirstExpand(e)}>
           <div className="col-4-tool-card">
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon.png" />
               {card_1.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
             </div>
-            <p>Find the nearest health facilities around you</p>
-            <input type="text" name="area" className="area-input" placeholder="Start typing the name of your area" />
+            <p className="tool-card-subtitle" style={{color: text_color}}>Find the nearest health facilities around you</p>
+            <input type="text" name="area" className="area-input" placeholder="Start typing the name of your area" style={{color: text_color}}/>
             <div className="tool-call-to-action-area">
-              <div className="tool-call-to-action-button" onClick={(e) => this.getHealthFacilities(card_1)}>
+              <div className="tool-call-to-action-button" style={{background: text_color, color: background_color}} onClick={(e) => this.getHealthFacilities(card_1)}>
                 Search
               </div>
             </div>
           </div>
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/pharmacies-icon.png" />
               {card_2.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
-            <p>Find pharmacies</p>
-            <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()}/>
-            <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" onChange={(e) => this.onChangeName()}/>
+            <p className="tool-card-subtitle" style={{color: text_color}}>Find pharmacies</p>
+            <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()} style={{color: text_color}}/>
+            <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" onChange={(e) => this.onChangeName()} style={{color: text_color}}/>
             <div className="tool-call-to-action-area">
-              <div className="tool-call-to-action-button" onClick={(e) => this.getPharmacies(card_2)}>
+              <div className="tool-call-to-action-button" style={{background: text_color, color: background_color}} onClick={(e) => this.getPharmacies(card_2)}>
                 Search
               </div>
             </div>
           </div>
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/meds-icon.png" />
               {card_3.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
-            <p>How much do you pay for drugs?</p>
+            <p className="tool-card-subtitle" style={{color: text_color}}>How much do you pay for drugs?</p>
             <div className="drug-name-dropdown">
               <Select 
                 name="drug_name"
@@ -302,17 +304,17 @@ export default class toCreditsCard extends React.Component {
                 })}
               />
             </div>
-            <input type="text" name="dose" className="dose-input" placeholder="No. of dose" />
-            <input type="text" name="price" className="price-input" placeholder="Buying price" />
+            <input type="text" name="dose" className="dose-input" placeholder="No. of dose" style={{color: text_color}}/>
+            <input type="text" name="price" className="price-input" placeholder="Buying price" style={{color: text_color}} />
             <div className="tool-call-to-action-area">
-              <div className="tool-call-to-action-button" onClick={(e) => this.getMedicinePrices(card_3)}>
+              <div className="tool-call-to-action-button" style={{background: text_color, color: background_color}} onClick={(e) => this.getMedicinePrices(card_3)}>
                 Search
               </div>
             </div>
           </div>
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-icon.png" />
               {card_4.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
@@ -321,7 +323,7 @@ export default class toCreditsCard extends React.Component {
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-logo.png" />
             </div>
             <div className="tool-call-to-action-area">
-              <a href={card_4.url} target="_blank"><div className="tool-call-to-action-button">
+              <a href={card_4.url} target="_blank"><div className="tool-call-to-action-button" style={{background: text_color, color: background_color}}>
                 Talk
               </div></a>
             </div>
@@ -337,6 +339,8 @@ export default class toCreditsCard extends React.Component {
             buying_price={this.state.buying_price}
             clickCallback={this.props.clickCallback}
             selector={this.props.selector}
+            background_color={background_color}
+            text_color={text_color}
           />
         </div>
       )
@@ -352,24 +356,25 @@ export default class toCreditsCard extends React.Component {
        let data = this.state.dataJSON.card_data.data,
         drug_data = this.state.drug_data,
         selectedOption = this.state.selectedOption,
-        card_1 = this.state.dataJSON.card_data.data.card_1,
-        card_2 = this.state.dataJSON.card_data.data.card_2,
-        card_3 = this.state.dataJSON.card_data.data.card_3,
-        card_4 = this.state.dataJSON.card_data.data.card_4;
-      console.log(drug_data, "drug data")
+        card_1 = data.card_1,
+        card_2 = data.card_2,
+        card_3 = data.card_3,
+        card_4 = data.card_4,
+        background_color = data.configuration.card_background_color,
+        text_color = data.configuration.text_color;
       return(
-        <div className="col-4-tool-strip col-4-mobile">
+        <div className="col-4-tool-strip col-4-mobile" style={{background: background_color}}>
           <div id="card_1_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard1Click(e)}>
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon.png" />
               {card_1.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
             </div>
             <div id="card_1" className="col-4-card-content">
-              <p>Find the nearest health facilities around you</p>
-              <input type="text" name="area" className="area-input" placeholder="Start typing the name of your area" />
+              <p className="tool-card-subtitle" style={{color: text_color}}>Find the nearest health facilities around you</p>
+              <input type="text" name="area" className="area-input" placeholder="Start typing the name of your area" style={{color: text_color}}/>
               <div className="tool-call-to-action-area">
-                <div className="tool-call-to-action-button" onClick={(e) => this.getHealthFacilities(card_1)}>
+                <div className="tool-call-to-action-button" style={{background: text_color, color: background_color}} onClick={(e) => this.getHealthFacilities(card_1)}>
                   Search
                 </div>
               </div>
@@ -377,17 +382,17 @@ export default class toCreditsCard extends React.Component {
           </div>
           <div className="horizontal-divider"></div>
           <div id="card_2_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard2Click(e)}>
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/pharmacies-icon.png" />
               {card_2.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <div id="card_2" className="col-4-card-content">
-              <p>Find pharmacies</p>
-              <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()}/>
-              <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" onChange={(e) => this.onChangeName()} />
+              <p className="tool-card-subtitle" style={{color: text_color}}>Find pharmacies</p>
+              <input type="text" name="location" className="location-input" placeholder="Search by location" onChange={(e) => this.onChangeLocation()} style={{color: text_color}}/>
+              <input type="text" name="pharmacie-name" className="pharmacie-name-input" placeholder="Search by pharmacie name" onChange={(e) => this.onChangeName()} style={{color: text_color}}/>
               <div className="tool-call-to-action-area">
-                <div className="tool-call-to-action-button" onClick={(e) => this.getPharmacies(card_2)}>
+                <div className="tool-call-to-action-button" style={{background: text_color, color: background_color}} onClick={(e) => this.getPharmacies(card_2)}>
                   Search
                 </div>
               </div>
@@ -395,13 +400,13 @@ export default class toCreditsCard extends React.Component {
           </div>
           <div className="horizontal-divider"></div>
           <div id="card_3_tool" className="col-4-tool-card" onClick={(e) => this.expandOnCard3Click(e)}>
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/meds-icon.png" />
               {card_3.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
             </div>
             <div id="card_3" className="col-4-card-content">
-              <p>How much do you pay for drugs?</p>
+              <p className="tool-card-subtitle" style={{color: text_color}}>How much do you pay for drugs?</p>
               <div className="drug-name-dropdown">
                 <Select 
                   name="drug_name"
@@ -416,10 +421,10 @@ export default class toCreditsCard extends React.Component {
                   })}
                 />
               </div>
-              <input type="text" name="dose" className="dose-input" placeholder="No. of dose" />
-              <input type="text" name="price" className="price-input" placeholder="Buying price" />
+              <input type="text" name="dose" className="dose-input" placeholder="No. of dose" style={{color: text_color}} />
+              <input type="text" name="price" className="price-input" placeholder="Buying price" style={{color: text_color}}/>
               <div className="tool-call-to-action-area">
-                <div className="tool-call-to-action-button" onClick={(e) => this.getMedicinePrices(card_3)}>
+                <div className="tool-call-to-action-button" style={{background: text_color, color: background_color}} onClick={(e) => this.getMedicinePrices(card_3)}>
                   Search
                 </div>
               </div>
@@ -427,12 +432,12 @@ export default class toCreditsCard extends React.Component {
           </div>
           <div className="horizontal-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title">
+            <div className="tool-card-title" style={{color: text_color}}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-icon.png" />
               {card_4.title}
             </div>
             <div className="tool-call-to-action-area-talk">
-              <a href={card_4.url} target="_blank"><div className="tool-call-to-action-button-talk">
+              <a href={card_4.url} target="_blank"><div className="tool-call-to-action-button-talk" style={{background: text_color, color: background_color}}>
                 Talk
               </div></a>
             </div>
@@ -446,6 +451,10 @@ export default class toCreditsCard extends React.Component {
             cardType={this.state.card_type}
             title={this.state.title}
             buying_price={this.state.buying_price}
+            clickCallback={this.props.clickCallback}
+            selector={this.props.selector}
+            background_color={background_color}
+            text_color={text_color}
           />
         </div>
       )      

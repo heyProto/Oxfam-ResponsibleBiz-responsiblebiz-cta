@@ -5,7 +5,7 @@
   padding-top: 10px;
   padding-bottom: 10px;
   box-sizing: border-box;
-  background: #25408F;
+  /*background: #25408F;*/
   display: inline-block;
   height: 70px;
   overflow: hidden;
@@ -47,13 +47,12 @@
 
 .tool-card-title{
   height: 60px;
-  /*background: blue;*/
   font-style: 16px;
   font-family: "cabin";
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 50px;
-  color: white;
+  /*color: white;*/
 }
 
 .tool-card-img{
@@ -81,21 +80,22 @@
 .tool-call-to-action-button{
   width: 140px;
   line-height: 32px;
-  background: white;
+  /*background: white;*/
   font-family: "cabin";
   font-size: 12px;
-  color: #25408F;
+  /*color: #25408F;*/
   display: inline-block;
   border-radius: 4px;
   letter-spacing: 0.5px;
   cursor: pointer;
 }
 
-p{
+.tool-card-subtitle{
   margin: 0px;
   font-family: "cabin";
   font-size: 14px;
-  color: #ffffffd6;
+  opacity: 0.8;
+  /*color: #ffffffd6;*/
 }
 
 input{
@@ -107,7 +107,7 @@ input{
   border: 0px;
   background: #ffffff1a;
   margin-top: 10px;
-  color: white;
+  /*color: white;*/
 }
 
 ::placeholder{
@@ -149,7 +149,7 @@ input:focus{
 .col-4-tool-strip{
   width: 300px;
   box-sizing: border-box;
-  background: #25408F;
+  /*background: #25408F;*/
   overflow: hidden;
   transition: 0.3s ease-in;
   margin-right: auto;
@@ -204,10 +204,10 @@ input:focus{
   right: 16px;
   position: absolute;
   line-height: 32px;
-  background: white;
+  /*background: white;*/
   font-family: "cabin";
   font-size: 12px;
-  color: #25408F;
+  /*color: #25408F;*/
   display: inline-block;
   border-radius: 4px;
   letter-spacing: 0.5px;
@@ -264,7 +264,7 @@ input:focus{
 
 #protograph_modal_card{
   max-height: 430px;
-  overflow-y: scroll; 
+  /*overflow-y: scroll; */
 }
 
 .modal-card-title{
@@ -301,8 +301,8 @@ input:focus{
   right: -20px;
   height: 30px;
   width: 30px;
-  background: #25408F;
-  color: white;
+  /*background: #25408F;*/
+  /*color: white;*/
   text-align: center;
   border-radius: 50%;
   cursor: pointer;
@@ -358,7 +358,7 @@ input:focus{
 }
 
 .single-search-result-title{
-  color: #25408F;
+  /*color: #25408F;*/
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 8px;

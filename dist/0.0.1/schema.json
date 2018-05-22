@@ -81,6 +81,25 @@
               "title": "URL"
             }
           }
+        },
+        "configuration":{
+          "id": "/properties/data/properties/configuration",
+          "type": "object",
+          "title": "Card Configurations",
+          "properties": {
+            "card_background_color": {
+              "id": "/properties/data/properties/configuration/properties/card_background_color",
+              "type": "string",
+              "format": "color",
+              "title": "Card Background Color"
+            },
+            "text_color": {
+              "id": "/properties/data/properties/configuration/properties/text_color",
+              "type": "string",
+              "format": "color",
+              "title": "Text Color"
+            }
+          }
         }
       }
     }

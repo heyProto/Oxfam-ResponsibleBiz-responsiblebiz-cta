@@ -48,7 +48,7 @@ export default class EditHealthCard extends React.Component {
         axios.get(this.props.uiSchemaURL)
       ]).then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema) => {
           axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
-            console.log(card, "card", response)
+            // console.log(card, "card", response)
             let stateVar = {
               dataJSON: {
                 card_data: card.data,
@@ -182,7 +182,7 @@ export default class EditHealthCard extends React.Component {
     if (this.state.schemaJSON === undefined) {
       return(<div>Loading</div>)
     } else {
-      console.log(this.state.drug_data, "drugs")
+      // console.log(this.state.drug_data, "drugs")
       return (
         <div className="proto-container">
           <div className="ui grid form-layout">

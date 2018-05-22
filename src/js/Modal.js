@@ -10,11 +10,11 @@ class Modal extends React.Component {
   }
 
   afterOpen() {
-    console.log("after open", this.props.clickCallback)
+    // console.log("after open", this.props.clickCallback)
     // document.querySelector('.Select-value span').style.opacity = 1;
     document.body.style['overflow-y'] = 'hidden';
-    this.props.selector.style.height = "450px"
     if(typeof this.props.clickCallback === 'function') {
+      this.props.selector.style.height = "500px";
       this.props.clickCallback();
     }
   }
@@ -27,8 +27,8 @@ class Modal extends React.Component {
     document.querySelector('.pharmacie-name-input').disabled = false;
     document.querySelector('.location-input').disabled = false;
     document.body.style['overflow-y'] = 'auto';
-    this.props.selector.style.height = "250px"
     if(typeof this.props.clickCallback === 'function') {
+      this.props.selector.style.height = "250px";
       this.props.clickCallback();
     }
   }
@@ -40,15 +40,19 @@ class Modal extends React.Component {
     } else {
       classname = "col-7"
     }
-    let modal_content,
+    let modal_content, background_color, text_color,
       image,
       title;
     if (this.props.responseData === undefined){
       modal_content = ''
       title =''
       image=''
+      background_color = ''
+      text_color = ''
     } else {
       let data = this.props.responseData;
+      background_color = this.props.background_color;
+      text_color = this.props.text_color;
       title = this.props.title;
       if (this.props.cardType === 'health_facilities'){
         image = 'https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon-black.png';
@@ -56,13 +60,13 @@ class Modal extends React.Component {
           return(          
             <div className="modal-list">
               <div className="single-search-result">
-                <div className="single-search-result-title">
+                <div className="single-search-result-title" style={{color: background_color}}>
                   {d.facility_name}
                 </div>
                 <div className="status-label">
                   {d.status}
                 </div>
-                <div className="single-search-result-values">
+                <div className="single-search-result-values" >
                   <div className="half-width-parameter">
                     <div className="single-parameter">
                       <div className="parameter-label">Type</div>
@@ -110,7 +114,7 @@ class Modal extends React.Component {
           return(
             <div className="modal-list">
               <div className="single-search-result">
-                <div className="single-search-result-title">
+                <div className="single-search-result-title" style={{color: background_color}}>
                   {d.name}
                 </div>
                 <div className="single-search-result-values">
@@ -154,7 +158,7 @@ class Modal extends React.Component {
           return(
             <div className="modal-list">
               <div className="single-search-result">
-                <div className="single-search-result-title">
+                <div className="single-search-result-title" style={{color: background_color}}>
                   You paid TZS {buying_price} <span className="above-price">- {data.price_check.buying_price_status} given price</span>
                 </div>
                 <div className="single-search-result-values">
@@ -217,6 +221,7 @@ class Modal extends React.Component {
       >
         <div
           className="protograph-close-modal"
+          style={{background: background_color, color: text_color}}
           onClick={((e) => {
             this.handleRequestClose(e);
             this.props.closeModal(e);
