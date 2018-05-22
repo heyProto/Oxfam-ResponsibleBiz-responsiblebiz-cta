@@ -164,6 +164,7 @@ export default class toCreditsCard extends React.Component {
     document.querySelectorAll(".verticle-divider").forEach((d, i) => {
       document.querySelectorAll(".verticle-divider")[i].style.height = "250px"
     }) 
+    document.querySelector(this.props.selector).style.height = "250px"
     if(typeof this.props.clickCallback === 'function') {
       this.props.clickCallback();
     }  
@@ -335,6 +336,7 @@ export default class toCreditsCard extends React.Component {
             title={this.state.title}
             buying_price={this.state.buying_price}
             clickCallback={this.props.clickCallback}
+            selector={this.props.selector}
           />
         </div>
       )
