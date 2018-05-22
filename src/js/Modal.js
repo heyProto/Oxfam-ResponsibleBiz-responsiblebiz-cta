@@ -13,7 +13,7 @@ class Modal extends React.Component {
     console.log("after open", this.props.clickCallback)
     // document.querySelector('.Select-value span').style.opacity = 1;
     document.body.style['overflow-y'] = 'hidden';
-    document.querySelector(this.props.selector).style.height = "450px"
+    this.props.selector.style.height = "450px"
     if(typeof this.props.clickCallback === 'function') {
       this.props.clickCallback();
     }
@@ -27,7 +27,7 @@ class Modal extends React.Component {
     document.querySelector('.pharmacie-name-input').disabled = false;
     document.querySelector('.location-input').disabled = false;
     document.body.style['overflow-y'] = 'auto';
-    document.querySelector(this.props.selector).style.height = "250px"
+    this.props.selector.style.height = "250px"
     if(typeof this.props.clickCallback === 'function') {
       this.props.clickCallback();
     }
