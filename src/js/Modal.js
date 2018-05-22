@@ -41,7 +41,6 @@ class Modal extends React.Component {
     let modal_content, background_color, text_color,
       image,
       title;
-    console.log(this.props.responseData, "this.props.responseData")
     if (this.props.responseData === undefined){
       modal_content = ''
       title =''

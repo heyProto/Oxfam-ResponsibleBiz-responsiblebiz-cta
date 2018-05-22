@@ -16,7 +16,8 @@ export default class toCreditsCard extends React.Component {
       selectedOption: {},
       showModal: false,
       optionalConfigJSON: {},
-      card_type: ''
+      card_type: '',
+      status: 'close'
     };
     this.showModal = this.showModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -160,18 +161,31 @@ export default class toCreditsCard extends React.Component {
   }
 
   onClickFirstExpand(e){
-    document.querySelector(".col-16-tool-strip").style.height = "250px"
-    document.querySelectorAll(".verticle-divider").forEach((d, i) => {
-      document.querySelectorAll(".verticle-divider")[i].style.height = "250px"
-    }) 
-    if(typeof this.props.clickCallback === 'function') {
-      this.props.selector.style.height = "250px"
-      this.props.clickCallback();
-    }  
-  }
-
-  onClickClose(e){
-
+    let status;
+    if (this.state.status === 'close'){
+      status = 'open';
+      document.querySelector(".col-16-tool-strip").style.height = "250px"
+      document.querySelectorAll(".verticle-divider").forEach((d, i) => {
+        document.querySelectorAll(".verticle-divider")[i].style.height = "250px"
+      }) 
+      if(typeof this.props.clickCallback === 'function') {
+        this.props.selector.style.height = "250px"
+        this.props.clickCallback();
+      }  
+    } else {
+      status = 'close'
+      document.querySelector(".col-16-tool-strip").style.height = "70px"
+      document.querySelectorAll(".verticle-divider").forEach((d, i) => {
+        document.querySelectorAll(".verticle-divider")[i].style.height = "50px"
+      }) 
+      if(typeof this.props.clickCallback === 'function') {
+        this.props.selector.style.height = "70px"
+        this.props.clickCallback();
+      }  
+    }
+    this.setState({
+      status: status
+    })
   }
 
   expandOnCard1Click(e){
@@ -254,9 +268,9 @@ export default class toCreditsCard extends React.Component {
         text_color = data.configuration.text_color;
       // console.log(this.state, drug_data, "drug data")
       return(
-        <div className="col-16-tool-strip" style={{background: background_color}} onClick={(e) => this.onClickFirstExpand(e)}>
+        <div className="col-16-tool-strip" style={{background: background_color}}>
           <div className="col-4-tool-card">
-            <div className="tool-card-title" style={{color: text_color}}>
+            <div className="tool-card-title" style={{color: text_color}} onClick={(e) => this.onClickFirstExpand(e)}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/facilities-icon.png" />
               {card_1.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
@@ -271,7 +285,7 @@ export default class toCreditsCard extends React.Component {
           </div>
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title" style={{color: text_color}}>
+            <div className="tool-card-title" style={{color: text_color}} onClick={(e) => this.onClickFirstExpand(e)}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/pharmacies-icon.png" />
               {card_2.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
@@ -287,7 +301,7 @@ export default class toCreditsCard extends React.Component {
           </div>
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title" style={{color: text_color}}>
+            <div className="tool-card-title" style={{color: text_color}} onClick={(e) => this.onClickFirstExpand(e)}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/meds-icon.png" />
               {card_3.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon" />
@@ -318,7 +332,7 @@ export default class toCreditsCard extends React.Component {
           </div>
           <div className="verticle-divider"></div>
           <div className="col-4-tool-card">
-            <div className="tool-card-title" style={{color: text_color}}>
+            <div className="tool-card-title" style={{color: text_color}} onClick={(e) => this.onClickFirstExpand(e)}>
               <img className="tool-card-img" src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/eshangazi-icon.png" />
               {card_4.title}
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
