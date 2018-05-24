@@ -4,7 +4,7 @@ import axios from 'axios';
 import Modal from "./Modal.js";
 import Select from 'react-select';
 
-export default class toCreditsCard extends React.Component {
+export default class toHealthCard extends React.Component {
   constructor(props) {
     super(props)
     let stateVar = {
@@ -128,7 +128,6 @@ export default class toCreditsCard extends React.Component {
       }
 
       axios.get(data.api + "?search_by=" +search_by+ "&value=" +value).then((response_data) => {
-        // console.log(response_data)
         this.setState({
           responseData: response_data.data.pharmacies,
           card_type: "pharmacies",
@@ -149,6 +148,7 @@ export default class toCreditsCard extends React.Component {
         api = drug_price +"?drug_id="+drug_name.drug_id+"&dose="+dose+"&buying_price="+buying_price;
 
       axios.get(api).then((response_data) => {
+        console.log(response_data)
         this.setState({
           responseData: response_data.data,
           card_type: "medicine_prices",

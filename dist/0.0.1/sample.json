@@ -6,7 +6,7 @@
     },
     "card_2": {
       "title": "Pharmacies",
-      "api": "http://htools-tz-pharmacy-reporting-tool-api.dokku-1.codefortanzania.org/api/searchpharmacies"      
+      "api": "https://pcservice.codefortanzania.org/api/searchpharmacies"      
     },
     "card_3": {
       "title": "Medicine Prices",
