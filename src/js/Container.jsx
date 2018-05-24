@@ -338,7 +338,7 @@ export default class toHealthCard extends React.Component {
               <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/down-arrow.png" className="down-arrow-icon"/>
             </div>
             <div className="e-shangazi-image-area">
-              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/bwanaafya-logo.png" />
+              <img src="https://cdn.protograph.pykih.com/b011d28f52396081faa8/img/bwanaafya-logo.png" width="112px"/>
             </div>
             <div className="tool-call-to-action-area">
               <a href={card_4.url} target="_blank"><div className="tool-call-to-action-button" style={{background: text_color, color: background_color}}>
