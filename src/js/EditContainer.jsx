@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import {all as axiosAll, get as axiosGet, spread as axiosSpread} from 'axios';
 import HealthCard from './Container.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
@@ -41,12 +41,12 @@ export default class EditHealthCard extends React.Component {
   componentDidMount() {
     if (typeof this.props.dataURL === "string"){
       axios.all([
-        axios.get(this.props.dataURL),
-        axios.get(this.props.schemaURL),
-        axios.get(this.props.optionalConfigURL),
-        axios.get(this.props.optionalConfigSchemaURL),
-        axios.get(this.props.uiSchemaURL)
-      ]).then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema) => {
+        axiosGet(this.props.dataURL),
+        axiosGet(this.props.schemaURL),
+        axiosGet(this.props.optionalConfigURL),
+        axiosGet(this.props.optionalConfigSchemaURL),
+        axiosGet(this.props.uiSchemaURL)
+      ]).then(axiosSpread((card, schema, opt_config, opt_config_schema, uiSchema) => {
           axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
             // console.log(card, "card", response)
             let stateVar = {

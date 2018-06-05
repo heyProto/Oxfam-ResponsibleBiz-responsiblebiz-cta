@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread} from 'axios';
 import Modal from "./Modal.js";
 import Select from 'react-select';
 
@@ -42,10 +42,10 @@ export default class toHealthCard extends React.Component {
   componentDidMount() {
     if (this.state.fetchingData){
       let items_to_fetch = [
-        axios.get(this.props.dataURL)
+        axiosGet(this.props.dataURL)
       ];
-      axios.all(items_to_fetch).then(axios.spread((card) => {
-        axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
+      axiosAll(items_to_fetch).then(axiosSpread((card) => {
+        axiosGet(card.data.data.card_3.listing_drugs_api).then((response) => {
           // console.log(card, "card", response)
           let stateVar = {
             fetchingData: false,
