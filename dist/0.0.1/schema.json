@@ -9,95 +9,19 @@
       "type": "object",
       "title": "Data",
       "properties": {
-        "card_1": {
-          "id": "/properties/data/properties/card_1",
-          "type": "object",
-          "title": "Card 1",
-          "properties": {
-            "title": {
-              "id": "/properties/data/properties/card_1/properties/title",
-              "type": "string",
-              "title": "Title"
-            },
-            "api": {
-              "id": "/properties/data/properties/card_1/properties/api",
-              "type": "string",
-              "title": "API"
-            }
-          }
-        },
-        "card_2": {
-          "id": "/properties/data/properties/card_2",
-          "type": "object",
-           "title": "Card 2",
-          "properties": {
-            "title": {
-              "id": "/properties/data/properties/card_2/properties/title",
-              "type": "string",
-              "title": "Title"
-            },
-            "api": {
-              "id": "/properties/data/properties/card_2/properties/api",
-              "type": "string",
-              "title": "API"
-            }
-          }
-        },
-        "card_3": {
-          "id": "/properties/data/properties/card_3",
-          "type": "object",
-          "title": "Card 3",
-          "properties": {
-            "title": {
-              "id": "/properties/data/properties/card_3/properties/title",
-              "type": "string",
-              "title": "Title"
-            },
-            "listing_drugs_api": {
-              "id": "/properties/data/properties/card_3/properties/listing_drugs_api",
-              "type": "string",
-              "title": "Drug List API"
-            },
-            "drug_price_api": {
-              "id": "/properties/data/properties/card_3/properties/drug_price_api",
-              "type": "string",
-              "title": "Drug Price API"
-            }
-          }
-        },
-        "card_4": {
-          "id": "/properties/data/properties/card_4",
-          "type": "object",
-          "title": "Card 4",
-          "properties": {
-            "title": {
-              "id": "/properties/data/properties/card_4/properties/title",
-              "type": "string",
-              "title": "Title"
-            },
-            "url": {
-              "id": "/properties/data/properties/card_4/properties/url",
-              "type": "string",
-              "title": "URL"
-            }
-          }
-        },
-        "configuration":{
-          "id": "/properties/data/properties/configuration",
-          "type": "object",
-          "title": "Card Configurations",
-          "properties": {
-            "card_background_color": {
-              "id": "/properties/data/properties/configuration/properties/card_background_color",
-              "type": "string",
-              "format": "color",
-              "title": "Card Background Color"
-            },
-            "text_color": {
-              "id": "/properties/data/properties/configuration/properties/text_color",
-              "type": "string",
-              "format": "color",
-              "title": "Text Color"
+        "buttons": {
+          "id": "/properties/data/properties/buttons",
+          "type": "array",
+          "title": "Buttons",
+          "items": {
+            "type": "object",
+            "properties": {
+              "url": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              }
             }
           }
         }

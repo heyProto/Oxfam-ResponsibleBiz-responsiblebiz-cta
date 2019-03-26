@@ -1,25 +1,8 @@
 {
-  "data":{
-    "card_1": {
-      "title": "Health Facilities",
-      "api": "https://healthlocator.codefortanzania.org/api/facilities"
-    },
-    "card_2": {
-      "title": "Pharmacies",
-      "api": "https://pcservice.codefortanzania.org/api/searchpharmacies"      
-    },
-    "card_3": {
-      "title": "Medicine Prices",
-      "listing_drugs_api": "https://medprices-api.codefortanzania.org/api/drugs",
-      "drug_price_api": "https://medprices-api.codefortanzania.org/api/checkprice"
-    },
-    "card_4": {
-      "title": "Bwana Afya",
-      "url": "http://bwanaafya.co.tz/"
-    },
-    "configuration":{
-      "card_background_color": "#25408F",
-      "text_color": "white"
+	"data": {
+    	"buttons": [
+          {"url": "#", "text": "Look at our data"},
+          {"url": "#", "text": "Sign up for our mailing list"}
+        ]
     }
-  }
 }

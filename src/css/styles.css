@@ -1,12 +1,47 @@
 @import url('https://fonts.googleapis.com/css?family=Bitter|Cabin');
 
+
+.c2a-button-col16, .c2a-button-col4 {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  text-decoration: none;
+  color: #464646;
+  font-family: 'Cabin';
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+  transition: background 250ms ease-in-out, 
+              transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0px 10px;
+  flex-grow: 1;
+  border: 1px solid #808080;
+  text-transform: uppercase;
+}
+
+.c2a-button-col4 {
+  margin: 5px 10px;
+  display: block;
+}
+
+.c2a-button-col4:hover, .c2a-button-col16:hover {
+  cursor: pointer;
+  color: #ffffff;
+background: rgba(50, 138, 171);
+border-color: rgba(50, 138, 171);
+transition: all 0.4s ease 0s;
+}
+
 .col-16-tool-strip{
   width: 1260px;
   padding-top: 10px;
   padding-bottom: 10px;
   box-sizing: border-box;
   /*background: #25408F;*/
-  /*display: inline-block;*/
+  display:flex;
   height: 70px;
   overflow: hidden;
   transition: 0.3s ease-in;
@@ -16,7 +51,6 @@
   height: 230px;
   /*background: #fafafa;*/
   width: 300px;
-  /*display: inline-block;*/
   margin-right: 9px;
   margin-left: 9px;
   box-sizing: border-box;
@@ -151,6 +185,7 @@ input:focus{
   box-sizing: border-box;
   /*background: #25408F;*/
   overflow: hidden;
+  display: grid;
   transition: 0.3s ease-in;
   margin-right: auto;
   margin-left: auto;
