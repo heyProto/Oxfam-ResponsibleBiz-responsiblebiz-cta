@@ -4,7 +4,7 @@ import {all as axiosAll, get as axiosGet, spread as axiosSpread} from 'axios';
 import HealthCard from './Container.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
-export default class EditHealthCard extends React.Component {
+export default class toOxfamCTAEdit extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -191,7 +191,7 @@ export default class EditHealthCard extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    proC4Ahealthtools
+                  toOxfamCTAEdit
                   </div>
                 </div>
                 <JSONSchemaForm

@@ -5,29 +5,29 @@ import HealthCard from './src/js/Container.jsx';
 window.ProtoGraph = window.ProtoGraph || {};
 window.ProtoGraph.Card = window.ProtoGraph.Card || {};
 
-ProtoGraph.Card.proC4Ahealthtools = function () {
-  this.cardType = 'proC4Ahealthtools';
+ProtoGraph.Card.toOxfamCTA = function () {
+  this.cardType = 'toOxfamCTA';
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.init = function (options) {
+ProtoGraph.Card.toOxfamCTA.prototype.init = function (options) {
   this.options = options;
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.getData = function (data) {
+ProtoGraph.Card.toOxfamCTA.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.renderCol16= function (data) {
+ProtoGraph.Card.toOxfamCTA.prototype.renderCol16= function (data) {
   this.mode = 'col16';
   this.render();
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.renderCol4= function (data) {
+ProtoGraph.Card.toOxfamCTA.prototype.renderCol4= function (data) {
   this.mode = 'col4';
   this.render();
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.render = function () {
+ProtoGraph.Card.toOxfamCTA.prototype.render = function () {
   ReactDOM.render(
     <HealthCard
       dataURL={this.options.data_url}
