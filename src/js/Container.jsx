@@ -1,7 +1,7 @@
 import React from 'react';
 import { all as axiosAll, get as axiosGet, spread as axiosSpread} from 'axios';
 
-export default class toHealthCard extends React.Component {
+export default class toOxfamCTACard extends React.Component {
   constructor(props) {
     super(props)
     let stateVar = {

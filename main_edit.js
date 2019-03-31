@@ -2,16 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import EditHealthCard from './src/js/EditContainer.jsx';
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.getData = function (data) {
+ProtoGraph.Card.toOxfamCTA.prototype.getData = function (data) {
   return this.containerInstance.exportData();
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.renderSEO = function (data) {
+ProtoGraph.Card.toOxfamCTA.prototype.renderSEO = function (data) {
   this.renderMode = 'SEO';
   return this.containerInstance.renderSEO();
 }
 
-ProtoGraph.Card.proC4Ahealthtools.prototype.renderEdit = function (onPublishCallback) {
+ProtoGraph.Card.toOxfamCTA.prototype.renderEdit = function (onPublishCallback) {
   this.mode = 'edit';
   this.onPublishCallback = onPublishCallback;
   ReactDOM.render(
