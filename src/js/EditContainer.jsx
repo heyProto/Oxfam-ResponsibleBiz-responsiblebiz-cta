@@ -47,21 +47,19 @@ export default class EditHealthCard extends React.Component {
         axiosGet(this.props.optionalConfigSchemaURL),
         axiosGet(this.props.uiSchemaURL)
       ]).then(axiosSpread((card, schema, opt_config, opt_config_schema, uiSchema) => {
-          axios.get(card.data.data.card_3.listing_drugs_api).then((response) => {
+
             // console.log(card, "card", response)
             let stateVar = {
               dataJSON: {
                 card_data: card.data,
                 configs: opt_config.data
               },
-              drug_data: response.data,
               schemaJSON: schema.data,
               uiSchemaJSON: uiSchema.data,
               optionalConfigJSON: opt_config.data,
               optionalConfigSchemaJSON: opt_config_schema.data
             }
             this.setState(stateVar);
-          })
         }))
         .catch((error) => {
           console.error(error);
