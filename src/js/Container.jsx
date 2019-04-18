@@ -66,8 +66,8 @@ export default class toOxfamCTACard extends React.Component {
       let data = this.state.dataJSON.card_data.data
       return(
         <div className="col-16-tool-strip">
-          <a className="c2a-button-col16" href={data.buttons[0].url}>{data.buttons[0].text}</a>
-          <a className="c2a-button-col16" href={data.buttons[1].url} style={{marginLeft: 0}}>{data.buttons[1].text}</a>
+          <a className="c2a-button-col16" href={data.buttons[0].url} target="_blank">{data.buttons[0].text}</a>
+          <a className="c2a-button-col16" href={data.buttons[1].url} style={{marginLeft: 0}} target="_blank">{data.buttons[1].text}</a>
         </div>
       )
     }
@@ -82,8 +82,8 @@ export default class toOxfamCTACard extends React.Component {
       let data = this.state.dataJSON.card_data.data
       return(
         <div className="col-4-tool-strip col-4-mobile">
-          <a className="c2a-button-col4" href={data.buttons[0].url}>{data.buttons[0].text}</a>
-          <a className="c2a-button-col4" style={{marginTop: 0}} href={data.buttons[1].url}>{data.buttons[1].text}</a>
+          <a className="c2a-button-col4" href={data.buttons[0].url} target="_blank">{data.buttons[0].text}</a>
+          <a className="c2a-button-col4" style={{marginTop: 0}} href={data.buttons[1].url} target="_blank">{data.buttons[1].text}</a>
         </div>
       )      
     }
